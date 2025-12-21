@@ -7,7 +7,7 @@ function ComingSoonSvg() {
     if (!containerRef.current) return;
 
     // Lade das SVG und füge Animationen hinzu
-    fetch('/home/sustavis-coming-soon.svg')
+    fetch('/sustavis-coming-soon.svg')
       .then(res => res.text())
       .then(svgContent => {
         if (!containerRef.current) return;
