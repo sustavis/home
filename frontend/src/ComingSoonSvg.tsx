@@ -16,6 +16,12 @@ function ComingSoonSvg() {
         const svg = containerRef.current.querySelector('svg');
         
         if (svg) {
+          // Setze SVG auf 100% Breite und Höhe für responsive Darstellung
+          svg.setAttribute('width', '100%');
+          svg.setAttribute('height', '100%');
+          svg.setAttribute('preserveAspectRatio', 'xMidYMid slice');
+          svg.style.display = 'block';
+          
           // Finde alle Elemente außer dem Hintergrund-Rechteck
           const allElements = svg.querySelectorAll('*');
           
@@ -50,8 +56,7 @@ function ComingSoonSvg() {
   return (
     <div 
       ref={containerRef} 
-      className="w-full h-full"
-      style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+      className="w-full h-full flex items-center justify-center"
     />
   );
 }
