@@ -22,6 +22,25 @@ function ComingSoonSvg() {
           svg.setAttribute('preserveAspectRatio', 'xMidYMid slice');
           svg.style.display = 'block';
           
+          // Mobile-spezifische Skalierung für Sustavis-Text
+          const isMobile = window.innerWidth < 768;
+          
+          if (isMobile) {
+            // Finde alle Text-Elemente oder Gruppen mit "sustavis" im Inhalt
+            const allGroups = svg.querySelectorAll('g, text, path');
+            
+            allGroups.forEach((element) => {
+              const content = element.textContent?.toLowerCase() || '';
+              const id = element.getAttribute('id')?.toLowerCase() || '';
+              
+              // Wenn Element "sustavis" enthält oder verwandte IDs hat
+              if (content.includes('sustavis') || id.includes('sustavis') || id.includes('text')) {
+                (element as HTMLElement).style.transform = 'scale(0.7)';
+                (element as HTMLElement).style.transformOrigin = 'center';
+              }
+            });
+          }
+          
           // Finde alle Elemente außer dem Hintergrund-Rechteck
           const allElements = svg.querySelectorAll('*');
           
