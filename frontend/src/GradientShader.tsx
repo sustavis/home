@@ -96,7 +96,7 @@ export default function GradientShader({
       console.error("WebGL not supported");
       return false;
     }
-    glRef.current = gl;
+    glRef.current = gl as WebGLRenderingContext;
 
     // Create and compile the vertex shader
     const vertexShader = gl.createShader(gl.VERTEX_SHADER);
