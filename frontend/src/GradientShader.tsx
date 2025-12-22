@@ -90,13 +90,16 @@ export default function GradientShader({
     const canvas = canvasRef.current;
     if (!canvas) return false;
 
-    // Get WebGL context
-    const gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
-    if (!gl) {
+    // Get WebGL context with proper typing
+    const glContext = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
+    if (!glContext) {
       console.error("WebGL not supported");
       return false;
     }
-    glRef.current = gl as WebGLRenderingContext;
+    
+    // Explicitly cast to WebGLRenderingContext
+    const gl = glContext as WebGLRenderingContext;
+    glRef.current = gl;
 
     // Create and compile the vertex shader
     const vertexShader = gl.createShader(gl.VERTEX_SHADER);
